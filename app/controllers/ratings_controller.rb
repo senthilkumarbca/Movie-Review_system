@@ -1,5 +1,9 @@
 class RatingsController < ApplicationController
   before_action :set_movie
+
+  def new
+
+  end
   def create
     @rating = Rating.new(ratings_params)
     @rating.user_id = current_user.id

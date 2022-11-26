@@ -1,0 +1,13 @@
+<h1>Reviews (<%= @movie.name %>)</h1>
+<%= render 'form', review: @movie.reviews.build %>
+<hr>
+<div id="reviews">
+  <% @reviews.each do |review| %>
+    <p>
+      <strong><%= review.user.email %> : </strong>
+      <%= review.comment %>
+    </p>
+  <% end %>
+  <br>
+  <%= link_to "Back", movies_path %>
+</div>

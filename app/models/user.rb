@@ -5,5 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  has_many :ratings
+  # ******************** Associations ********************
+  has_many :ratings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+
+  # ******************** Validations ********************
+  validates :email, presence: true
+
 end

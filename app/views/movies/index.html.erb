@@ -6,6 +6,10 @@
   <% @movies.each do |movie| %>
     <%= render movie %>
     <p>
+      <%= link_to "Reviews (#{movie.reviews_count})", movie_reviews_path(movie) %>
+      <%= link_to "Add Rating", new_movie_rating_path(movie) %>
+    </p>
+    <p>
       <%= link_to "Show this movie", movie %>
     </p>
   <% end %>
