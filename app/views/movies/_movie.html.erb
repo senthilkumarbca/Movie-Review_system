@@ -8,5 +8,5 @@
     <strong>Release date:</strong>
     <%= movie.release_date %>
   </p>
-
+  <%= image_tag movie.image, style: "height:250px" if movie.image.attached? %>
 </div>

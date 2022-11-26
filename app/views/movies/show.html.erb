@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @movie %>
-<%= image_tag @movie.image, style: "height:250px" if @movie.image.attached? %>
+
+<div style="padding: 10px 0">
+  <h3>Add Rating:</h3>
+  <%= render 'ratings/form', rating: @movie.ratings.build %>
+</div>
 
 <div>
   <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
