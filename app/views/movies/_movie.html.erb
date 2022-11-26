@@ -9,4 +9,8 @@
     <%= movie.release_date %>
   </p>
   <%= image_tag movie.image, style: "height:250px" if movie.image.attached? %>
+  <p>
+    <strong>Rating:</strong>
+    <%= movie.average_rating %>⭐
+  </p>
 </div>
