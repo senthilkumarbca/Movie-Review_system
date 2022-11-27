@@ -10,7 +10,7 @@ class RatingsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to movie_path(@movie), notice: @rating.save ? 'Rating saved successfully.' : 'Rating not saved.'
+        redirect_to movies_path, notice: @rating.save ? 'Rating saved successfully.' : 'Rating not saved.'
       }
     end
   end
