@@ -8,6 +8,16 @@ class Movie < ApplicationRecord
   # ******************** Validations ********************
   validates_presence_of :name, :release_date
 
+  # ******************** Scope ********************
+  # scope :search, -> (search_name) { where(name: search_name) }
+
+  def self.search(search_name)
+    if search_name.length > 0
+      self.where("lower(name) LIKE ?", "%#{search_name.downcase}%")
+    else
+      Movie.all.order(average_rating: :desc)
+    end
+  end
   # ******************** Callbacks ********************
   def update_average_rating
     total_ratings = 0

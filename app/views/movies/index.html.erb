@@ -1,17 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
-
+<div id="search">
+  <%= form_tag movies_path, method: :get do %>
+    <%= text_field_tag 'search_name', params[:search_name] %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+</div>
 <div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Reviews (#{movie.reviews_count})", movie_reviews_path(movie) %>
-      <%= link_to "Add Rating", new_movie_rating_path(movie) %>
-    </p>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
+  <% if @movies.length > 0 %>
+    <% @movies.each do |movie| %>
+      <%= render movie %>
+      <p>
+        <%= link_to "Reviews (#{movie.reviews_count})", movie_reviews_path(movie) %>
+        <%= link_to "Add Rating", new_movie_rating_path(movie) %>
+      </p>
+      <p>
+        <%= link_to "Show this movie", movie %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No Movies are Found</p>
   <% end %>
 </div>
 

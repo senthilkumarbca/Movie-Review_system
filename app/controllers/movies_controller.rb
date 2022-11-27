@@ -3,7 +3,11 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all.order(average_rating: :desc)
+    if params[:search_name]
+      @movies = Movie.search(params[:search_name]).order(average_rating: :desc)
+    else
+      @movies = Movie.all.order(average_rating: :desc)
+    end
   end
 
   # GET /movies/1 or /movies/1.json
