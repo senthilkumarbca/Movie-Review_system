@@ -1,29 +1,32 @@
 <%= form_with(model: [@movie, rating]) do |form| %>
-  <% if rating.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+  <div class="modal-body">
+    <% if rating.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
 
-      <ul>
-        <% rating.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.hidden_field :movie_id %>
-  </div>
-
-  <div>
-    <%= form.label :star, style: "display: block" %>
-    <%= form.collection_radio_buttons :star, (1..5).reverse_each.map { |n| [n, "#{n}⭐"] }, :first, :last do |b| %>
-      <%= b.radio_button %>
-      <%= b.label(style: 'display: inline') %>
+        <ul>
+          <% rating.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
+    <div>
+      <%= form.hidden_field :movie_id %>
+    </div>
+
+    <div>
+      <%= form.label :star, style: "display: block" %>
+      <%= form.collection_radio_buttons :star, (1..5).reverse_each.map { |n| [n, "#{n}⭐"] }, :first, :last do |b| %>
+        <%= b.radio_button %>
+        <%= b.label(style: 'display: inline') %>
+      <% end %>
+    </div>
+
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <%= form.submit class: "btn btn-primary", data: { action: "click->bs-modal#submitEnd" } %>
   </div>
 <% end %>

@@ -1,16 +1,12 @@
-<div id="<%= dom_id movie %>">
-  <p>
-    <strong>Name:</strong>
-    <%= movie.name %>
-  </p>
-
-  <p>
-    <strong>Release date:</strong>
-    <%= movie.release_date %>
-  </p>
-  <%= image_tag movie.image, style: "height:250px" if movie.image.attached? %>
-  <p>
-    <strong>Rating:</strong>
-    <%= movie.average_rating %>⭐
-  </p>
+<div id="<%= dom_id movie %>" class="card h-100" style="width: 18rem;">
+  <%= image_tag movie.image, class: "card-img-top" if movie.image.attached? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= movie.name %></h5>
+    <p class="card-text"><%= movie.release_date %></p>
+    <p class="card-text">⭐<%= movie.average_rating %></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to "Reviews (#{movie.reviews_count})", movie_reviews_path(movie), class: "btn btn-primary" %>
+    <%= link_to "Add Rating", new_movie_rating_path(movie), data: { controller: 'rating' }, class: "btn btn-outline-primary" %>
+  </div>
 </div>

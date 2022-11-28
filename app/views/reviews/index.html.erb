@@ -1,5 +1,10 @@
 <h1>Reviews (<%= @movie.name %>)</h1>
-<%= render 'form', review: @movie.reviews.build %>
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'form', review: @movie.reviews.build %>
+  </div>
+</div>
+
 <hr>
 <div id="reviews">
   <% @reviews.each do |review| %>
