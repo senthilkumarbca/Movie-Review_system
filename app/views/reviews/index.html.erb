@@ -7,8 +7,8 @@
       <p>
         <strong><%= review.user == current_user ? 'You' : review.user.email %> : </strong>
         <%= review.comment %>
-        <%= link_to 'Edit', edit_movie_review_path(@movie,review) if can? :update, review %>
-        <%= button_to 'Delete', movie_review_path(@movie,review), method: :delete if can? :destroy, review %>
+        <%= link_to 'Edit', edit_movie_review_path(@movie, review) if can? :update, review %>
+        <%= link_to 'Delete', [@movie, review], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } if can? :destroy, review %>
       </p>
     <% end %>
   <% end %>

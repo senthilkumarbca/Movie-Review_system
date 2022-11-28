@@ -76,3 +76,5 @@ gem 'devise'
 gem "letter_opener", group: :development
 
 gem 'cancancan'
+
+gem 'cssbundling-rails', '~> 1.1', '>= 1.1.1'
