@@ -1,10 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
-<div id="search">
+<div id="dateFilter">
   <%= form_tag movies_path, method: :get do %>
-    <%= text_field_tag 'search_name', params[:search_name] %>
-    <%= submit_tag 'Search' %>
+      <%= date_field_tag 'from_date', params[:from_date] %>
+      <%= date_field_tag 'to_date', params[:to_date] %>
+      <%= submit_tag 'Search by Date' %>
   <% end %>
 </div>
 <div id="movies">

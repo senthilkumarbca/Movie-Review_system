@@ -3,8 +3,10 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    if params[:search_name]
+    if !params[:search_name].blank?
       @movies = Movie.search(params[:search_name]).order(average_rating: :desc)
+    elsif !params[:from_date].blank? and !params[:to_date].blank?
+      @movies = Movie.all.filter_by_date(params[:from_date], params[:to_date])
     else
       @movies = Movie.all.order(average_rating: :desc)
     end
