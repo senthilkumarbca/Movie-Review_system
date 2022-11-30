@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
       if @review.update(review_params)
         format.html { redirect_to movie_reviews_path(@movie), notice: 'Review was successfully updated.' }
       else
-        format.html { redirect_to :edit, notice: 'Review was successfully updated.', status: :unprocessable_entity }
+        format.html { render :edit, notice: 'Review was successfully updated.', status: :unprocessable_entity }
       end
     end
   end
@@ -55,6 +55,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:movie_id, :comment)
+    params.require(:review).permit(:movie_id, :comment, :user_id)
   end
 end

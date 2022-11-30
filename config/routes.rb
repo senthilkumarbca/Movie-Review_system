@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  default_url_options :host => "example.com"
   devise_for :users, controllers: { confirmations: 'users/confirmations' }
   resources :movies do
     resources :ratings
