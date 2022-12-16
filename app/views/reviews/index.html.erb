@@ -1,22 +1,23 @@
 <h1>Reviews (<%= @movie.name %>)</h1>
 <div class="row">
-  <div class="col-md-6">
-    <%= render 'form', review: @movie.reviews.build %>
-  </div>
+  <%= render 'form', review: @movie.reviews.build %>
 </div>
 
 <hr>
 <div id="reviews">
   <% @reviews.each do |review| %>
     <% unless review.id.nil? %>
-      <p>
+      <p class="d-inline-flex mb-0">
         <strong><%= review.user == current_user ? 'You' : review.user.email %> : </strong>
         <%= review.comment %>
-        <%= link_to 'Edit', edit_movie_review_path(@movie, review) if can? :update, review %>
-        <%= link_to 'Delete', [@movie, review], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } if can? :destroy, review %>
+        <ul class="d-inline float-end">
+          <%= link_to 'Edit', edit_movie_review_path(@movie, review), class: "badge bg-info", style: "text-decoration:none;color:#111;" if can? :update, review %> |
+          <%= link_to 'Delete', [@movie, review], data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "badge bg-danger", style: "text-decoration:none;color:#111;" if can? :destroy, review %>
+        </ul>
       </p>
+      <hr>
     <% end %>
   <% end %>
   <br>
-  <%= link_to "Back", movies_path %>
+  <%= link_to "Back", movies_path, class: "btn btn-outline-primary" %>
 </div>

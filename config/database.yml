@@ -83,6 +83,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: Movie_Review_System_production
-#  username: Movie_Review_System
-#  password: <%#= ENV["MOVIE_REVIEW_SYSTEM_DATABASE_PASSWORD"] %>
+  username: Movie_Review_System
+  password: <%= ENV["MOVIE_REVIEW_SYSTEM_DATABASE_PASSWORD"] %>

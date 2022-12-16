@@ -1,9 +1,10 @@
-<div id="<%= dom_id movie %>" class="card h-100" style="width: 18rem;">
-  <%= image_tag movie.image, class: "card-img-top" if movie.image.attached? %>
+<div id="<%= dom_id movie %>" class="card" style="width: 18rem;height: 70vh ">
+  <%= image_tag movie.image, class: "card-img-top h-50" if movie.image.attached? %>
   <div class="card-body">
     <h5 class="card-title"><%= movie.name %></h5>
     <p class="card-text"><%= movie.release_date %></p>
     <p class="card-text">⭐<%= movie.average_rating %></p>
+    <a href="https://www.google.com/search?q=<%= movie.name %>+movie" target="_blank">Know More</a>
   </div>
   <div class="card-footer">
     <%= link_to "Reviews (#{movie.reviews_count})", movie_reviews_path(movie), class: "btn btn-primary" %>
